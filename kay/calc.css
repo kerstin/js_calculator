@@ -1,6 +1,24 @@
+#maincontainer {
+    margin: 1em;
+}
+
 #calculator {
     font-family: Verdana, "sans-serif";
     color: #456789;
+    font-size: 1em;
+    background: #ffd3ec;
+    border-radius: 0.6em;
+    padding: .8em;
+    left: 3em;
+    position: absolute;
+    top: 5em;
+    padding-bottom: 2em;
+    padding-top: 2em;
+
+}
+
+#description {
+    font-size: 13px;
 }
 
 .button_row {
@@ -17,6 +35,7 @@
     line-height: 2em;
     margin: 0.3em;
     border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em 0.1em 0.05em #f4cae2;
 }
 
 .number {
@@ -33,21 +52,23 @@
     width: 10.28em;
 }
 
-#equals {
+#equals_btn {
     background: #6de1ff;
     width: 18.5em;
 }
 
-#clear {
+#clear_btn {
     width: 2em;
+    background: #fdfff8;
 }
 
 #lucky {
     width: 3em;
 }
 
-#result {
+#display {
     background: aquamarine;
     width: 22.4em;
     font-style: oblique;
+    box-shadow: -0.15em 0.3em 0.5em #6fdeb7 inset;
 }
