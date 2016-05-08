@@ -8,12 +8,10 @@
     font-size: 1em;
     background: #ffd3ec;
     border-radius: 0.6em;
-    padding: .8em;
     left: 3em;
     position: absolute;
     top: 5em;
-    padding-bottom: 2em;
-    padding-top: 2em;
+    padding: 2em .8em;
     border: #e5a9c4 3px solid;
 }
 
