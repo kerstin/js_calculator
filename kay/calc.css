@@ -1,7 +1,53 @@
-.row {
+#calculator {
+    font-family: Verdana, "sans-serif";
+    color: #456789;
+}
+
+.button_row {
     clear: both;
 }
 
 .button {
     float: left;
+    border: 2px solid #456789;
+    height: 2em;
+    padding: 0.5em;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 2em;
+    margin: 0.3em;
+    border-radius: 0.4em;
+}
+
+.number {
+    width: 3em;
+    background: #ffec85;
+}
+
+.operation {
+    width: 4.2em;
+    background: #ff9a65;
+}
+
+.update_result {
+    width: 10.28em;
+}
+
+#equals {
+    background: #6de1ff;
+    width: 18.5em;
+}
+
+#clear {
+    width: 2em;
+}
+
+#lucky {
+    width: 3em;
+}
+
+#result {
+    background: aquamarine;
+    width: 22.4em;
+    font-style: oblique;
 }
