@@ -1,3 +1,8 @@
+@font-face {
+    font-family: "Digital7";
+    src: url("digital-7_mono.ttf") format("truetype");
+}
+
 #maincontainer {
     margin: 1em;
 }
@@ -7,12 +12,13 @@
     color: #456789;
     font-size: 1em;
     background: #ffd3ec;
-    border-radius: 0.6em;
+    border-radius: 1.6em;
     left: 3em;
     position: absolute;
     top: 5em;
     padding: 2em .8em;
-    border: #e5a9c4 3px solid;
+    border: #e5a9c4 2px solid;
+    box-shadow: 0.15em 0.15em 0.3em 0.05em #cf99b1;
 }
 
 #description {
@@ -33,7 +39,7 @@
     line-height: 2em;
     margin: 0.3em;
     border-radius: 0.4em;
-    box-shadow: 0.1em 0.1em 0.1em 0.05em #f4cae2;
+    box-shadow: 0.15em 0.15em #c6a3b7;
 }
 
 .number {
@@ -66,8 +72,18 @@
 
 #display {
     background: aquamarine;
-    width: 22.4em;
+    width: 22.1em;
     font-style: oblique;
     box-shadow: -0.15em 0.3em 0.5em #6fdeb7 inset;
     text-align: right;
+
+    font-family: Digital7;
+    font-size-adjust: 1.2;
+    line-height: 1.5em;
+    padding-right: 0.8em;
+}
+
+
+.button_pressed {
+    box-shadow: 0 0 0 0.1em #c6a3b7;
 }
