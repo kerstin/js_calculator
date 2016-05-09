@@ -69,6 +69,17 @@ function clear() {
     lastAction = "clear";
 }
 
+// show button press
+function button_press(btn) {
+    btn.className += " button_pressed";
+}
+
+// revert button press / show button released
+function button_release(btn) {
+    btn.className = btn.className.replace( /(?:^|\s)button_pressed(?!\S)/g , '' );
+}
+
+
 // wait until the site has finished loading
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -86,6 +97,16 @@ document.addEventListener('DOMContentLoaded', function() {
         calculate();
         // result = 0;
     }, false);
+
+    var allButtons = document.getElementsByClassName("button");
+    for (var i = 0; i < allButtons.length; i++) {
+        allButtons[i].addEventListener('mousedown', function() {
+            button_press(this);
+        }, false);
+        allButtons[i].addEventListener('mouseout', function() {
+             button_release(this);
+        }, false);
+    }
 
     // create number buttons array
     // iterate over no. buttons, adding event listeners for click event
