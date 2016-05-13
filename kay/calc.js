@@ -12,7 +12,7 @@ function calculate(action) {
     cv = Number(currentValue);
 
     // debug
-    // alert("result before: " + result + "\ncurrent value before: " + cv);
+    console.log(action);
 
     switch(lastAction) {
         case "add":
@@ -20,53 +20,55 @@ function calculate(action) {
             break;
         case "subtract":
             result = result - cv;
-            lastAction = "subtract";
             break;
         case "multiply":
             result = result * cv;
-            lastAction = "multiply";
             break;
         case "divide":
             result = result / cv;
-            lastAction = "divide";
             break;
         case "equals":
             result = result + cv;
-            lastAction = "equals";
-            break;
-        case "clear":
-            update_display(0);
-            lastAction = "equals";
             break;
         default:
+            update_display(0);
+            result = result + cv;
             break;
     }
     currentValue = 0;
     lastAction = action;
     update_display(result);
-
-    // debug
-    // alert("result after: " + result + "\ncurrent value after: " + cv);
 }
 
 // string together digits entered one after the other
 function concatNumber(btn) {
     var buttonValue = btn.innerHTML;
-    
+
+    // number pressed without a preceding calculation
+    // handled like a reset
+    if (lastAction == "equals" && result != 0) {
+        result = 0;
+    }
+
+    // start the string
     if (currentValue == 0) {
         currentValue = buttonValue;
+        // continue current string
     } else {
         currentValue = currentValue + buttonValue;
     }
 
-    display.innerHTML = currentValue;
+    // debug
+    console.log(buttonValue);
+
+    update_display(currentValue);
 }
 
 // clear the display, reset calculator to zero
 function clear() {
     result = 0;
     currentValue = 0;
-    lastAction = "clear";
+    update_display(0);
 }
 
 // show button press
@@ -89,13 +91,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var clear_btn = document.getElementById("clear");
     clear_btn.addEventListener('click', function() {
         clear();
+        // reset lastAction to equals
         calculate("equals");
     }, false);
 
-    var calculate_btn = document.getElementById("calculate");
+    var calculate_btn = document.getElementById("equals");
     calculate_btn.addEventListener('click', function() {
-        calculate();
-        // result = 0;
+        calculate(this.id);
     }, false);
 
     var allButtons = document.getElementsByClassName("button");
