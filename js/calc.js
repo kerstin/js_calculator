@@ -2,14 +2,20 @@ var result = 0;
 var currentValue = 0;
 var lastAction = "equals";
 
+// regex to find last word and _pressed class
+var pattLast = /\s\S+$/;
+var pattPressed = /(\s\w+)_pressed/;
+
+
 // display the value of a number button on the calculator's display
 function update_display(value) {
-    display.innerHTML = value;
+    var dTxt= document.getElementById("display_text");
+    dTxt.innerHTML = value;
 }
 
 function calculate(action) {
     // la = action;
-    cv = Number(currentValue);
+    var cv = Number(currentValue);
 
     // debug
     console.log(action);
@@ -73,20 +79,35 @@ function clear() {
 
 // show button press
 function button_press(btn) {
-    btn.className += " button_pressed";
+
+    // get last class
+    var lastClass = pattLast.exec(btn.className);
+    console.log(typeof lastClass);
+
+    // check if it's pressed already
+    // if not, make new class with _pressed state from it, then append this new class
+    if (!pattPressed.test(lastClass[0])) {
+        btn.className += lastClass + "_pressed";
+    }
+
+    // debug
+    // console.log("classes: " + btn.className);
 }
 
 // revert button press / show button released
 function button_release(btn) {
-    btn.className = btn.className.replace( /(?:^|\s)button_pressed(?!\S)/g , '' );
+    btn.className = btn.className.replace( /(\s\w+)_pressed($)/ , '' );
+
+    // debug
+    // console.log("classes: " + btn.className);
 }
 
 
 // wait until the site has finished loading
 document.addEventListener('DOMContentLoaded', function() {
 
-    var display = document.getElementById("display");
-    display.innerHTML = currentValue;
+    var dTxt= document.getElementById("display_text");
+    dTxt.innerHTML = currentValue;
 
     var clear_btn = document.getElementById("clear");
     clear_btn.addEventListener('click', function() {
@@ -101,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, false);
 
     var allButtons = document.getElementsByClassName("button");
-    for (var i = 0; i < allButtons.length; i++) {
+    for (i = 0; i < allButtons.length; i++) {
         allButtons[i].addEventListener('mousedown', function() {
             button_press(this);
         }, false);
