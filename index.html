@@ -13,7 +13,8 @@
     <body>
                 <div id="maincontainer">
                     <div id="description">
-                        JS Calculator &mdash; a basic calculator programmed in JavaScript.
+                        <span class="project_name">JS Calculator</span><br>
+                        A basic calculator &mdash; yet not your typical calculator &mdash; programmed in JavaScript.
                     </div>
                     <div id="calculator">
                         <div class="button_row">
@@ -37,14 +38,20 @@
                                 <div id="divide" class="button operation">÷</div>
                         </div>
                         <div class="button_row">
-                                <div id="equals" class="button update_result">=</div>
-                                <div id="clear" class="button update_result">CL</div>
+                                <div id="equals" class="button update_result equals">=</div>
+                                <div id="clear" class="button update_result clear">CL</div>
                                 <!--<div id="lucky" class="button update_result">?</div>-->
                         </div>
                         <div class="button_row">
-                                <div id="display" class="button">$RESULT</div>
+                                <div id="display">
+                                    <span id="display_text">$RESULT</span>
+                                </div>
                         </div>
                     </div>
+                </div>
+                <div id="footer">
+                    &copy; 2016 K Kollmann<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="https://github.com/keikoro/js_calculator">source code on GH</a>
                 </div>
     </body>
 </html>
